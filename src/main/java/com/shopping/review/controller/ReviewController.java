@@ -17,6 +17,7 @@ import com.shopping.review.model.Review;
 import com.shopping.review.service.ReviewService;
 
 @RestController
+@RequestMapping("/review")
 public class ReviewController {
 	  
 	    private static final String DELETE_MESSAGE = "Deleted Successfully";
@@ -25,35 +26,35 @@ public class ReviewController {
 	    private ReviewService ReviewService;
 	  
 	    // Save operation
-	    @PostMapping("/Reviews")
+	    @PostMapping("/reviews")
 	    public Review saveReview(@Validated @RequestBody Review Review)
 	    {
 	        return ReviewService.saveReview(Review);
 	    }
 	  
 	    // Read operation
-	    @GetMapping("/Reviews")
+	    @GetMapping("/reviews")
 	    public List<Review> fetchReviewList(Pageable page)
 	    {
 	        return ReviewService.fetchReviewList(page);
 	    }
 	    
 	    // Read operation
-	    @GetMapping("/Reviews/{id}")
+	    @GetMapping("/reviews/{id}")
 	    public Review fetchReviewById(@PathVariable("id") long ReviewId)
 	    {
 	        return ReviewService.getReviewById(ReviewId);
 	    }
 	    
 	   // Read operation
-	    @GetMapping("/Reviews/user/{username}")
+	    @GetMapping("/reviews/user/{username}")
 		public List<Review> findAllReviewUsersNative(@PathVariable("username") String username) {
 
 			return ReviewService.findAllReviewUsersNative(username);
 		}
 
 		// Read operation
-	    @GetMapping("/Reviews/product/{productId}")
+	    @GetMapping("/reviews/product/{productId}")
 		public List<Review> findAllReviewNative(@PathVariable("productId") String productId) {
 			
 			return ReviewService.findAllReviewNative(productId);
@@ -61,14 +62,14 @@ public class ReviewController {
 
 	  
 	    // Update operation
-	    @PutMapping("/Reviews/{id}")
+	    @PutMapping("/reviews/{id}")
 	    public Review updateReview(@RequestBody Review Review,@PathVariable("id") long ReviewId)
 	    {
 	        return ReviewService.updateReview(Review, ReviewId);
 	    }
 	  
 	    // Delete operation
-	    @DeleteMapping("/Reviews/{id}")
+	    @DeleteMapping("/reviews/{id}")
 	    public String deleteReviewById(@PathVariable("id") long ReviewId)
 	    {
 	        ReviewService.deleteReviewById(ReviewId);
