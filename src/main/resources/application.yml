@@ -5,7 +5,7 @@ eureka:
   instance:
     preferIpAddress: true
     hostname: localhost
-
+ 
 spring:
   application:
     name: review
